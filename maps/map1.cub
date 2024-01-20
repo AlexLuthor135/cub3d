@@ -1,0 +1,13 @@
+NO ./sprites/wall1.xpm
+WE ./sprites/wall3.xpm
+EA ./sprites/wall4.xpm
+SO ./sprites/wall2.xpm
+
+F 0,100,100
+C 0,0,100
+
+11111
+10001
+11W01
+10001
+11111
