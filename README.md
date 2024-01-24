@@ -18,7 +18,7 @@ by the color stated in the map file.
 
 ![cub_bonus](https://github.com/AlexLuthor135/cub3d/assets/134649029/17b07db7-3464-43b7-ba26-847c73ad8aeb)
 
-In the bonus part I have implemented sprites, textured drawing of wall and ceiling
+In the bonus part I have implemented sprites, minimap, textured drawing of wall and ceiling
 as well as the possibility to draw a sky. Moreover, there is a possibility of adding
 doors which can be opened during the interaction. Additionally, there is music when
 the game is launched, though optimized for MacOS.
