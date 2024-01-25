@@ -6,7 +6,7 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 19:55:29 by alappas           #+#    #+#             */
-/*   Updated: 2024/01/20 22:21:16 by alappas          ###   ########.fr       */
+/*   Updated: 2024/01/25 18:31:01 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ typedef struct s_game
 	int				key_left;
 	t_raycast		*raycast;
 	t_img			img;
-	t_wall			wall[8];
+	t_wall			wall[4];
 }	t_game;
 
 //file_render.c

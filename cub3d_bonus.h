@@ -6,7 +6,7 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 19:55:29 by alappas           #+#    #+#             */
-/*   Updated: 2024/01/20 22:21:21 by alappas          ###   ########.fr       */
+/*   Updated: 2024/01/25 19:08:27 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # include <stdlib.h>
 # include <math.h>
 # include <signal.h>
+# include <sys/time.h>
 
 typedef struct s_raycast
 {
@@ -144,6 +145,7 @@ typedef struct s_game
 	char			*floor;
 	char			*ceiling;
 	char			*barrel;
+	char			*barrel2;
 	char			*music;
 	char			*door;
 	char			direction;
@@ -161,6 +163,7 @@ typedef struct s_game
 	int				key_d;
 	int				key_a;
 	int				key_e;
+	int				key_q;
 	int				key_esc;
 	int				key_right;
 	int				key_left;
@@ -168,7 +171,7 @@ typedef struct s_game
 	t_raycast		*raycast;
 	t_sprite		*sprite;
 	t_img			img;
-	t_wall			wall[8];
+	t_wall			wall[9];
 }	t_game;
 
 //file_render.c
@@ -263,6 +266,7 @@ void			ft_strdel(char **s);
 void			free_2darray(char **array);
 void			put_pixel(t_img *img, int x, int y, int color);
 unsigned int	get_pixel(t_img *img, int x, int y);
+uint64_t		time_now(void);
 
 //utils2.c
 void			music(t_game *game);

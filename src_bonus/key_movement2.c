@@ -6,7 +6,7 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:06:58 by alappas           #+#    #+#             */
-/*   Updated: 2024/01/20 17:08:41 by alappas          ###   ########.fr       */
+/*   Updated: 2024/01/25 18:43:14 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	key_press(int key, t_game *game)
 		game->key_right = 1;
 	if (key == 14)
 		game->key_e = 1;
+	if (key == 12)
+		game->key_q = 1;
 	return (0);
 }
 
@@ -51,6 +53,8 @@ int	key_release(int key, t_game *game)
 		game->key_right = 0;
 	if (key == 14)
 		game->key_e = 0;
+	if (key == 12)
+		game->key_q = 0;
 	return (0);
 }
 

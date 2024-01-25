@@ -6,7 +6,7 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:07:19 by alappas           #+#    #+#             */
-/*   Updated: 2024/01/20 17:07:21 by alappas          ###   ########.fr       */
+/*   Updated: 2024/01/25 19:08:20 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,13 +98,19 @@ void	draw_sprite(t_game *game, t_raycast *rc, double *y, int stripe)
 {
 	int				d;
 	unsigned int	color;
+	int				type;
 
+	type = 0;
+	if (time_now() % 2 == 0)
+		type = 6;
+	else if (game->barrel2 && game->wall[7].img)
+		type = 7;
 	d = ((*y) - rc->v_movescreen) * 256
 		- WINDOW_H * 128 + rc->sprite_height * 128;
-	rc->tex_y = ((d * game->wall[6].height) / rc->sprite_height) / 256;
+	rc->tex_y = ((d * game->wall[type].height) / rc->sprite_height) / 256;
 	if (rc->tex_y == 0)
 		rc->tex_y = 1;
-	color = get_pixel(game->wall[6].img, rc->tex_x, rc->tex_y);
+	color = get_pixel(game->wall[type].img, rc->tex_x, rc->tex_y);
 	if ((color & 0x00FFFFFF) != 0)
 		put_pixel(&game->img, stripe, (*y), color);
 	(*y)++;

@@ -13,7 +13,7 @@ SRCS_BONUS		=	main.c map_render.c \
 				map_check_utils.c sky_bonus.c\
 
 MLX_FLAGS		= 	-lmlx -framework OpenGL -framework AppKit
-CC_FLAGS		=	-Wall -Wextra -Werror -g
+CC_FLAGS		=	-Wall -Wextra -Werror -g -fsanitize=address
 CC				=	cc
 SRCS_F			= src/
 OBJS_F			= obj/
