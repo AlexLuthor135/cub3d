@@ -6,7 +6,7 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 22:18:31 by alappas           #+#    #+#             */
-/*   Updated: 2024/01/25 18:33:54 by alappas          ###   ########.fr       */
+/*   Updated: 2024/01/26 19:50:12 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	map_alloc(t_game *game)
 	if (game->barrel != NULL && game->sprite_index > 0)
 	{
 		image_paste(game, game->barrel, ++i);
-		image_paste(game, game->barrel2, ++i);
+		if (game->barrel2)
+			image_paste(game, game->barrel2, ++i);
 	}
 	if (game->door != NULL && game->door_index > 0)
 	{
