@@ -6,7 +6,7 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 03:43:30 by alappas           #+#    #+#             */
-/*   Updated: 2024/01/19 03:45:14 by alappas          ###   ########.fr       */
+/*   Updated: 2024/01/27 21:06:50 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	error_walls_helper(t_game *game, size_t x, int y)
 	{
 		if (ft_strchr("NEWS", game->map[y][x]))
 			init_player(game, x, y);
-		if (y - 1 < 0 || x - 1 < 0 || !map[y - 1] || !map[y + 1]
+		if (y - 1 < 0 || (int)x - 1 < 0 || !map[y - 1] || !map[y + 1]
 			|| ft_strlen(map[y - 1]) <= x
 			|| !map[y][x - 1] || !map[y][x + 1]
 			|| !check_char(map[y][x + 1], 0)
