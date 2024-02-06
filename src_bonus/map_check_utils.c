@@ -6,7 +6,7 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 03:43:30 by alappas           #+#    #+#             */
-/*   Updated: 2024/01/25 18:40:13 by alappas          ###   ########.fr       */
+/*   Updated: 2024/02/06 06:58:45 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,17 @@ int	error_walls_helper(t_game *game, size_t x, int y)
 	char	**map;
 
 	map = game->map;
-	if (ft_strchr("NEWS02DO", game->map[y][x]))
+	if (ft_strchr("NEWS02DO", map[y][x]))
 	{
-		if (ft_strchr("NEWS", game->map[y][x]))
+		if (ft_strchr("NEWS", map[y][x]))
 			init_player(game, x, y);
-		if (game->map[y][x] == '2')
+		if (map[y][x] == '2')
 			game->sprite_index++;
-		if (game->map[y][x] == 'D' || game->map[y][x] == 'O')
+		if (map[y][x] == 'D' || map[y][x] == 'O')
 			game->door_index++;
 		if (y - 1 < 0 || (int)x - 1 < 0 || !map[y - 1] || !map[y + 1]
 			|| ft_strlen(map[y - 1]) <= x
+			|| ft_strlen(map[y + 1]) <= x
 			|| !map[y][x - 1] || !map[y][x + 1]
 			|| !check_char(map[y][x + 1], 0)
 			|| !check_char(map[y + 1][x], 0)
@@ -81,7 +82,7 @@ int	error_string_helper(char **map, int i)
 	if (ft_strncmp(map[i], "NO ", 3) && ft_strncmp(map[i], "SO ", 3)
 		&& ft_strncmp(map[i], "WE ", 3) && ft_strncmp(map[i], "EA ", 3)
 		&& ft_strncmp(map[i], "F ", 2) && ft_strncmp(map[i], "C ", 2)
-		&& ft_strncmp(map[i], "S ", 2) && ft_strncmp(map[i], "M ", 2)
+		&& ft_strncmp(map[i], "S1 ", 3) && ft_strncmp(map[i], "M ", 2)
 		&& ft_strncmp(map[i], "D ", 2) && ft_strncmp(map[i], "S2 ", 3))
 		return (1);
 	return (0);

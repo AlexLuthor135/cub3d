@@ -6,7 +6,7 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 22:18:31 by alappas           #+#    #+#             */
-/*   Updated: 2024/01/20 17:39:39 by alappas          ###   ########.fr       */
+/*   Updated: 2024/02/06 07:25:54 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,9 @@ void	error_fd(t_game *game)
 	exit_game(game);
 }
 
-char	**map_render(t_game *game, char *map)
-
-
+void	map_render(t_game *game, char *map)
 {
 	int		fd;
-	char	**world;
 	char	*str;
 	int		i;
 
@@ -85,19 +82,20 @@ char	**map_render(t_game *game, char *map)
 	if (fd < 0)
 		error_fd(game);
 	game->map_height = (count_y(fd));
-	world = ft_calloc((sizeof(char *)) * (game->map_height + 1), 1);
-	if (!world)
-		return (NULL);
+	game->map_data = ft_calloc((sizeof(char *)) * (game->map_height + 1), 1);
+	if (!game->map_data)
+		return ;
 	close(fd);
 	i = 0;
 	fd = open(map, O_RDONLY);
 	str = get_next_line(fd);
 	while (str)
 	{
-		world[i++] = str;
+		game->map_data[i++] = ft_strdup(str);
+		free(str);
 		str = get_next_line(fd);
 	}
+	free(str);
 	close(fd);
-	world[i] = NULL;
-	return (world);
+	game->map_data[i] = NULL;
 }

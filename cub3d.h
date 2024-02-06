@@ -6,7 +6,7 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 19:55:29 by alappas           #+#    #+#             */
-/*   Updated: 2024/01/25 18:31:01 by alappas          ###   ########.fr       */
+/*   Updated: 2024/02/06 07:25:13 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,16 @@ typedef struct s_wall
 	int		height;
 }				t_wall;
 
+typedef struct s_index
+{
+	int	north;
+	int	south;
+	int	west;
+	int	east;
+	int	floor;
+	int	ceiling;
+}				t_index;
+
 typedef struct s_game
 {
 	int				map_height;
@@ -97,6 +107,7 @@ typedef struct s_game
 	unsigned int	floor_bit;
 	unsigned int	ceiling_bit;
 	char			**map;
+	char			*l_el;
 	int				player_index;
 	int				x;
 	int				y;
@@ -109,6 +120,7 @@ typedef struct s_game
 	int				key_left;
 	t_raycast		*raycast;
 	t_img			img;
+	t_index			s_index;
 	t_wall			wall[4];
 }	t_game;
 
@@ -142,6 +154,12 @@ int				exit_game(t_game *game);
 int				check_char(char map, int i);
 void			init_player(t_game *game, int x, int y);
 int				error_walls_helper(t_game *game, size_t x, int y);
+void			last_element(t_game *game);
+int				error_string_helper(char **map, int i);
+
+//map_check_utils2.c
+void			index_string_error(t_game *game);
+void			index_string_helper(t_game *game, int i);
 
 //map_check.c
 int				error_string(t_game *game);
@@ -153,7 +171,7 @@ char			**map_create(t_game *game);
 //map_render.c
 void			map_alloc(t_game *game);
 char			*sprite_alloc(t_game *game, char *str, int len);
-char			**map_render(t_game *game, char *map);
+void			map_render(t_game *game, char *map);
 
 //math_movement.c
 void			front_move(t_game *game);

@@ -6,7 +6,7 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 22:10:01 by alappas           #+#    #+#             */
-/*   Updated: 2024/01/20 17:40:06 by alappas          ###   ########.fr       */
+/*   Updated: 2024/02/06 07:25:39 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,9 @@ int	main(int argc, char **argv)
 		return (0);
 	game = ft_calloc(sizeof(t_game), 1);
 	game->raycast = ft_calloc(sizeof(t_raycast), 1);
-	game->map_data = map_render(game, argv[1]);
+	map_render(game, argv[1]);
 	map_fix(game);
+	last_element(game);
 	if (error_string(game))
 		return (printf("Error: Wrong map element\n"), exit_game(game));
 	map_alloc(game);

@@ -1,7 +1,7 @@
 SRCS		=	main.c map_render.c \
 				image_render.c map_check.c utils.c \
 				map_create.c raycast.c map_check_utils.c\
-				file_render.c key_movement.c \
+				file_render.c key_movement.c map_check_utils2.c\
 				key_rotation.c movement_math.c raycast_utils.c \
 
 SRCS_BONUS		=	main.c map_render.c \
@@ -10,7 +10,7 @@ SRCS_BONUS		=	main.c map_render.c \
 				file_render.c key_movement.c sprite_render.c\
 				key_rotation.c minimap.c key_movement2.c \
 				raycast_utils.c raycast_bonus.c sprite_utils.c \
-				map_check_utils.c sky_bonus.c\
+				map_check_utils.c map_check_utils2.c sky_bonus.c\
 
 MLX_FLAGS		= 	-lmlx -framework OpenGL -framework AppKit
 CC_FLAGS		=	-Wall -Wextra -Werror -g -fsanitize=address

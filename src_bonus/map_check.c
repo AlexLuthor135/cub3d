@@ -6,7 +6,7 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 22:47:58 by alappas           #+#    #+#             */
-/*   Updated: 2024/01/20 15:40:11 by alappas          ###   ########.fr       */
+/*   Updated: 2024/02/06 07:02:39 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,22 @@ int	error_string(t_game *game)
 
 	map = game->map_data;
 	i = 0;
-	while (map[i] && ft_strncmp(map[i], "C ", 2))
+	while (map[i])
 	{
 		x = 0;
-		if (map[i][0] == ' ' || map[i][0] == '\n')
+		if (map[i][0] == '\0' || map[i][0] == ' ')
 		{
-			while (map[i][x] && map[i][x] != '\n')
+			while (map[i][x] && map[i][x] != '\0')
 			{
-				if (map[i][x] != ' ' || map[i][x] != '\t')
+				if (map[i][x] != ' ' && map[i][x] != '\t')
 					return (1);
 				x++;
 			}
 		}
 		else if (error_string_helper(map, i))
 			return (1);
+		if (!ft_strncmp(map[i], game->l_el, ft_strlen(game->l_el)))
+			break ;
 		i++;
 	}
 	return (0);
@@ -51,7 +53,7 @@ int	error_symbols(t_game *game)
 	while (map[y] != NULL)
 	{
 		x = 0;
-		while (map[y][x] && map[y][x] != '\n')
+		while (map[y][x] && map[y][x] != '\0')
 		{
 			if (!check_char(map[y][x], 1))
 				return (1);
@@ -75,11 +77,12 @@ int	error_corners(t_game *game)
 		x = 0;
 		while (map[y][x])
 		{
-			if (ft_strchr("NEWS02D", game->map[y][x]))
+			if (ft_strchr("NEWS02D", map[y][x]))
 			{
-				if (!check_char(map[y - 1][x - 1], 0)
-					|| !check_char(map[y + 1][x - 1], 0) || (!map[y - 1][x + 1]
-					|| !check_char(map[y - 1][x + 1], 0))
+				if (!map[y - 1][x + 1] || !map[y + 1][x + 1]
+					||!check_char(map[y - 1][x - 1], 0)
+					|| !check_char(map[y + 1][x - 1], 0)
+					|| !check_char(map[y - 1][x + 1], 0)
 					|| !check_char(map[y + 1][x + 1], 0))
 					return (1);
 			}
@@ -96,16 +99,18 @@ int	error_walls(t_game *game)
 	int		y;
 	char	**map;
 
-	y = -1;
+	y = 0;
 	map = game->map;
-	while (map[++y])
+	while (map[y])
 	{
-		x = -1;
-		while (map[y][++x])
+		x = 0;
+		while (map[y][x])
 		{
 			if (error_walls_helper(game, x, y))
 				return (1);
+			x++;
 		}
+		y++;
 	}
 	return (0);
 }
