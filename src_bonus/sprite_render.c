@@ -6,7 +6,7 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:07:19 by alappas           #+#    #+#             */
-/*   Updated: 2024/01/27 22:04:40 by alappas          ###   ########.fr       */
+/*   Updated: 2024/02/06 07:52:30 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	draw_sprite(t_game *game, t_raycast *rc, double *y, int stripe)
 	unsigned int	color;
 	int				type;
 
-	type = 0;
+	type = 6;
 	if (time_now() % 2 == 0)
 		type = 6;
 	else if (game->barrel2 && game->wall[7].img)
