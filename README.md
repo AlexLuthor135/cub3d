@@ -22,3 +22,7 @@ In the bonus part I have implemented animated sprites, minimap, textured drawing
 as well as the possibility to draw sky. Moreover, there is a possibility of adding
 doors which can be opened and closed during the interaction with E and Q keys. Additionally, there is music when
 the game is launched, though optimized for MacOS.
+
+## COMPATIBILITY
+
+Currently compatible with MacOS only.
