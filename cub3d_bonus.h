@@ -6,7 +6,7 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 19:55:29 by alappas           #+#    #+#             */
-/*   Updated: 2024/05/15 22:12:24 by alappas          ###   ########.fr       */
+/*   Updated: 2024/05/15 23:33:03 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@
 # include <math.h>
 # include <signal.h>
 # include <sys/time.h>
+# include <libgen.h>
 
 typedef struct s_raycast
 {

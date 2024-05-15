@@ -11,6 +11,7 @@ SRCS_BONUS		=	main.c map_render.c \
 				key_rotation.c minimap.c key_movement2.c \
 				raycast_utils.c raycast_bonus.c sprite_utils.c \
 				map_check_utils.c map_check_utils2.c sky_bonus.c\
+				utils3.c\
 
 ifeq ($(UNAME_S),Linux)
     MLX = mlx_linux/

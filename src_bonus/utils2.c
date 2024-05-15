@@ -6,34 +6,11 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:07:29 by alappas           #+#    #+#             */
-/*   Updated: 2024/05/15 22:04:20 by alappas          ###   ########.fr       */
+/*   Updated: 2024/05/15 23:57:34 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d_bonus.h"
-
-void	music(t_game *game)
-{
-	char	*music_path;
-	char	*full_path;
-
-	music_path = file_render(game->music);
-	if (music_path)
-	{
-		game->pid = -1;
-		game->pid = fork();
-		full_path = ft_strjoin(MUSIC, music_path);
-		if (game->pid == 0)
-		{
-			system(full_path);
-			kill(game->pid + 1, SIGTERM);
-			exit(EXIT_FAILURE);
-		}
-		free(full_path);
-	}
-	if (music_path)
-		free(music_path);
-}
 
 void	mlx_skip(t_game *game)
 {

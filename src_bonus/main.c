@@ -6,7 +6,7 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 22:10:01 by alappas           #+#    #+#             */
-/*   Updated: 2024/05/15 21:34:11 by alappas          ###   ########.fr       */
+/*   Updated: 2024/05/15 23:58:46 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,5 @@ int	check_ext(char *s2)
 		else
 			return (printf("Error: Wrong map extension\n"), 1);
 	}
-	return (0);
-}
-
-int	exit_game(t_game *game)
-{
-	kill(game->pid + 1, SIGTERM);
-	exit(0);
 	return (0);
 }

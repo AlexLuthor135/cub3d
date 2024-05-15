@@ -1,8 +1,15 @@
+import os
 import sys
-import pygame #install pygame with 'pip install pygame'
+import pygame
+
+with open('pid.txt', 'w') as f:
+    f.write(str(os.getpid()))  # Write the PID of the Python script
 
 pygame.mixer.init()
 pygame.mixer.music.load(sys.argv[1])
 pygame.mixer.music.play()
-while pygame.mixer.music.get_busy() == True:
-    continue
+try:
+    while pygame.mixer.music.get_busy() == True:
+        continue
+except KeyboardInterrupt:
+    print("\nMusic stopped by user")
