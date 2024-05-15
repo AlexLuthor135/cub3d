@@ -6,7 +6,7 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 22:10:01 by alappas           #+#    #+#             */
-/*   Updated: 2024/02/06 07:26:34 by alappas          ###   ########.fr       */
+/*   Updated: 2024/05/15 21:34:11 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	main(int argc, char **argv)
 	game->map = map_create(game);
 	if (map_check(game))
 		exit_game(game);
+	game->mlx = mlx_init();
 	map_alloc(game);
 	music(game);
 	init_sprite(game);

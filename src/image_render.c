@@ -6,7 +6,7 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 16:33:24 by alappas           #+#    #+#             */
-/*   Updated: 2024/01/27 21:25:10 by alappas          ###   ########.fr       */
+/*   Updated: 2024/05/15 22:01:35 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ unsigned int	color_handle(char	*color_string)
 int	main_draw(t_game *game)
 
 {
-	mlx_clear_window(game->mlx, game->win);
 	ceiling_floor(game);
 	ft_raycast(game, game->raycast);
 	keys_execute(game);

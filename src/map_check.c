@@ -6,7 +6,7 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 22:47:58 by alappas           #+#    #+#             */
-/*   Updated: 2024/02/06 07:09:17 by alappas          ###   ########.fr       */
+/*   Updated: 2024/05/15 21:37:41 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,11 @@ int	error_symbols(t_game *game)
 		x = 0;
 		while (map[y][x] && map[y][x] != '\0')
 		{
-			if (!check_char(map[y][x], 1))
+			if (!check_char(map[y][x], 2))
+			{
+				printf("Symbol = %c\n", map[y][x]);
 				return (1);
+			}
 			x++;
 		}
 		y++;

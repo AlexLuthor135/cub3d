@@ -6,7 +6,7 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:07:29 by alappas           #+#    #+#             */
-/*   Updated: 2024/02/06 04:07:45 by alappas          ###   ########.fr       */
+/*   Updated: 2024/05/15 22:04:20 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	music(t_game *game)
 	{
 		game->pid = -1;
 		game->pid = fork();
-		full_path = ft_strjoin("afplay ", music_path);
+		full_path = ft_strjoin(MUSIC, music_path);
 		if (game->pid == 0)
 		{
 			system(full_path);
@@ -37,7 +37,6 @@ void	music(t_game *game)
 
 void	mlx_skip(t_game *game)
 {
-	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, WINDOW_W, WINDOW_H, "Golden Sun");
 	game->img.img = mlx_new_image(game->mlx, WINDOW_W, WINDOW_H);
 	game->img.addr = mlx_get_data_addr(game->img.img, &game->img.bits_per_pixel,

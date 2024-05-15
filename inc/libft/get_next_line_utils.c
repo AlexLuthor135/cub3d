@@ -6,13 +6,13 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 18:11:09 by alappas           #+#    #+#             */
-/*   Updated: 2023/08/10 21:46:02 by alappas          ###   ########.fr       */
+/*   Updated: 2024/04/14 02:39:00 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-void	ft_str_cpy(t_line *list, char *string)
+void	ft_str_cpy(t_gnl *list, char *string)
 
 {
 	int	i;
@@ -39,7 +39,7 @@ void	ft_str_cpy(t_line *list, char *string)
 	string[j] = '\0';
 }
 
-int	str_len(t_line *list)
+int	str_len(t_gnl *list)
 
 {
 	int	i;
@@ -66,7 +66,18 @@ int	str_len(t_line *list)
 	return (len);
 }
 
-int	find_n(t_line *list)
+t_gnl	*ft_listlast(t_gnl *list)
+
+{
+	if (list != NULL)
+	{
+		while (list->next)
+			list = list->next;
+	}
+	return (list);
+}
+
+int	find_n(t_gnl *list)
 
 {
 	int	i;
@@ -87,10 +98,10 @@ int	find_n(t_line *list)
 	return (0);
 }
 
-void	dealloc(t_line **list, t_line *new_node, char *buf)
+void	dealloc(t_gnl **list, t_gnl *new_node, char *buf)
 
 {
-	t_line	*temp;
+	t_gnl	*temp;
 
 	if (*list == NULL)
 		return ;

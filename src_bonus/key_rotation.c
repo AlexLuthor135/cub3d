@@ -6,7 +6,7 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:01:10 by alappas           #+#    #+#             */
-/*   Updated: 2024/01/20 17:01:12 by alappas          ###   ########.fr       */
+/*   Updated: 2024/05/15 21:48:53 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	rotate_camera(t_game *game, int key)
 
 	old_direction_x = game->raycast->dir_x;
 	old_plane_x = game->raycast->view_x;
-	if (key == LEFT_KEY && game->key_right)
+	if (key == KEY_LEFT && game->key_right)
 		rotate_left(game, old_direction_x, old_plane_x);
-	else if (key == RIGHT_KEY)
+	else if (key == KEY_RIGHT)
 		rotate_right(game, old_direction_x, old_plane_x);
 }

@@ -6,21 +6,20 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 12:07:29 by alappas           #+#    #+#             */
-/*   Updated: 2023/08/01 03:07:48 by alappas          ###   ########.fr       */
+/*   Updated: 2024/04/14 02:39:16 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include <string.h>
+#include "libft.h"
 
-void	clean_list(t_line **list)
+void	clean_list(t_gnl **list)
 
 {
-	int		i;
-	int		j;
-	t_line	*new_node;
-	t_line	*last_node;
-	char	*buf;
+	int			i;
+	int			j;
+	t_gnl		*new_node;
+	t_gnl		*last_node;
+	char		*buf;
 
 	if (list == NULL)
 		return ;
@@ -30,7 +29,7 @@ void	clean_list(t_line **list)
 	while (last_node->str[i] && last_node->str[i] != '\n')
 		i++;
 	buf = malloc(BUFFER_SIZE + 1);
-	new_node = malloc(sizeof(t_line));
+	new_node = malloc(sizeof(t_gnl));
 	if (buf == NULL || new_node == NULL)
 		return ;
 	while (last_node->str[i] && last_node->str[i++])
@@ -41,7 +40,7 @@ void	clean_list(t_line **list)
 	dealloc(list, new_node, buf);
 }
 
-char	*ft_line(t_line *list)
+char	*ft_line(t_gnl *list)
 
 {
 	int		len;
@@ -57,16 +56,16 @@ char	*ft_line(t_line *list)
 	return (next_str);
 }
 
-void	add_str(t_line **list, char *buf)
+void	add_str(t_gnl **list, char *buf)
 
 {
-	t_line	*new_node;
-	t_line	*last_node;
+	t_gnl	*new_node;
+	t_gnl	*last_node;
 
 	if (list == NULL)
 		return ;
 	last_node = ft_listlast(*list);
-	new_node = malloc(sizeof(t_line));
+	new_node = malloc(sizeof(t_gnl));
 	if (new_node == NULL)
 		return ;
 	if (last_node == NULL)
@@ -77,7 +76,7 @@ void	add_str(t_line **list, char *buf)
 	new_node->next = NULL;
 }
 
-void	create_list(t_line **list, int fd)
+void	create_list(t_gnl **list, int fd)
 
 {
 	int		char_read;
@@ -102,9 +101,9 @@ void	create_list(t_line **list, int fd)
 char	*get_next_line(int fd)
 
 {
-	static t_line	*list;
+	static t_gnl	*list;
 	char			*next_line;
-	t_line			*param;
+	t_gnl			*param;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, NULL, 0) < 0)
 	{

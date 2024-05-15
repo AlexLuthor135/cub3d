@@ -6,7 +6,7 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 13:31:33 by alappas           #+#    #+#             */
-/*   Updated: 2024/01/19 20:00:16 by alappas          ###   ########.fr       */
+/*   Updated: 2024/04/14 02:41:10 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,26 @@
 # include <string.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <stdarg.h>
+# include <stdint.h>
+# include <fcntl.h>
+# include <string.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
 
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+typedef struct s_gnl
+{
+	char			*str;
+	struct s_gnl	*next;
+}	t_gnl;
 
 int		ft_tolower(int c);
 int		ft_toupper(int c);
@@ -70,5 +84,26 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+int		ft_printf_s(char *s);
+int		ft_printf_d(int n);
+int		ft_printf_p(unsigned long long ptr);
+int		ft_printf_x(unsigned long long v, int ascii);
+int		ft_printf_undec(unsigned int n);
+int		ft_printf(const char *s, ...);
+int		ft_len(uintptr_t v, int base);
+
+t_gnl	*ft_listlast(t_gnl *list);
+char	*ft_line(t_gnl *list);
+int		find_n(t_gnl *list);
+void	ft_str_cpy(t_gnl *list, char *string);
+int		str_len(t_gnl *list);
+t_gnl	*ft_listlast(t_gnl *list);
+void	dealloc(t_gnl **list, t_gnl *new_node, char *buf);
+char	*get_next_line(int fd);
+void	clean_list(t_gnl **list);
+void	add_str(t_gnl **list, char *buf);
+void	ft_listclear(t_gnl **list);
+void	ft_listdelone(t_gnl *list);
 
 #endif

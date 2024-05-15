@@ -6,7 +6,7 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:06:38 by alappas           #+#    #+#             */
-/*   Updated: 2024/01/20 17:39:19 by alappas          ###   ########.fr       */
+/*   Updated: 2024/05/15 21:30:02 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ void	image_paste(t_game *game, char *path, int i)
 		image_error(game, full_path, 0);
 	wall = &game->wall[i];
 	wall->img = malloc(sizeof(t_img));
-	wall->img->img = mlx_xpm_file_to_image(&game->mlx, full_path,
+	if (!wall->img)
+		image_error(game, full_path, 1);
+	wall->img->img = mlx_xpm_file_to_image(game->mlx, full_path,
 			&wall->width, &wall->height);
 	if (!wall->img->img)
 		image_error(game, full_path, 1);

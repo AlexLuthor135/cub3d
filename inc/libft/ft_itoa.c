@@ -6,13 +6,13 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 19:58:28 by alappas           #+#    #+#             */
-/*   Updated: 2023/05/26 01:22:30 by alappas          ###   ########.fr       */
+/*   Updated: 2024/04/14 01:44:10 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_len(int n)
+int	ft_length(int n)
 
 {
 	int	i;
@@ -40,14 +40,14 @@ int	ft_sign(int n)
 char	*ft_limit(int n)
 
 {
-	char	*str1;
+	char	*str;
 
-	str1 = NULL;
+	str = NULL;
 	if (n == INT_MIN)
-		str1 = ft_strdup("-2147483648");
+		str = ft_strdup("-2147483648");
 	else
-		str1 = (ft_strdup("0"));
-	return (str1);
+		str = (ft_strdup("0"));
+	return (str);
 }
 
 char	*ft_itoa(int n)
@@ -60,7 +60,7 @@ char	*ft_itoa(int n)
 	len = 0;
 	if (n == INT_MIN || n == 0)
 		return (ft_limit(n));
-	len = ft_len(n);
+	len = ft_length(n);
 	sign = ft_sign(n);
 	if (n < 0)
 		len = len + 1;

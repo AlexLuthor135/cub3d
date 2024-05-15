@@ -6,11 +6,13 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:07:10 by alappas           #+#    #+#             */
-/*   Updated: 2024/01/27 21:49:35 by alappas          ###   ########.fr       */
+/*   Updated: 2024/05/15 22:02:14 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d_bonus.h"
+
+#ifdef __APPLE__
 
 int	ft_mouse(t_game *game)
 {
@@ -28,6 +30,25 @@ int	ft_mouse(t_game *game)
 	mlx_mouse_move(game->win, WINDOW_W / 2, WINDOW_H / 2);
 	return (0);
 }
+#elif __linux__
+
+int	ft_mouse(t_game *game)
+{
+	int	x;
+	int	y;
+	int	dx;
+
+	mlx_mouse_hide(game->mlx, game->win);
+	mlx_mouse_get_pos(game->mlx, game->win, &x, &y);
+	dx = x - WINDOW_W / 2;
+	if (dx > 0)
+		ft_params(game, dx * (-(2 * M_PI / 11520)));
+	else if (dx < 0)
+		ft_params(game, -dx * 2 * M_PI / 11520);
+	mlx_mouse_move(game->mlx, game->win, WINDOW_W / 2, WINDOW_H / 2);
+	return (0);
+}
+#endif
 
 void	ft_direction(t_raycast *pl, double rotate)
 {

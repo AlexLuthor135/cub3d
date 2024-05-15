@@ -6,7 +6,7 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 03:43:30 by alappas           #+#    #+#             */
-/*   Updated: 2024/02/06 07:08:43 by alappas          ###   ########.fr       */
+/*   Updated: 2024/05/15 21:37:35 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,8 @@ int	error_string_helper(char **map, int i)
 {
 	if (ft_strncmp(map[i], "NO ", 3) && ft_strncmp(map[i], "SO ", 3)
 		&& ft_strncmp(map[i], "WE ", 3) && ft_strncmp(map[i], "EA ", 3)
-		&& ft_strncmp(map[i], "F ", 2) && ft_strncmp(map[i], "C ", 2))
+		&& ft_strncmp(map[i], "F ", 2) && ft_strncmp(map[i], "C ", 2)
+		&& ft_strncmp(map[i], "\n", 1))
 		return (1);
 	return (0);
 }

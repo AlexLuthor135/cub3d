@@ -6,7 +6,7 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 22:47:58 by alappas           #+#    #+#             */
-/*   Updated: 2024/02/06 07:02:39 by alappas          ###   ########.fr       */
+/*   Updated: 2024/05/15 21:38:05 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	error_symbols(t_game *game)
 		x = 0;
 		while (map[y][x] && map[y][x] != '\0')
 		{
-			if (!check_char(map[y][x], 1))
+			if (!check_char(map[y][x], 2))
 				return (1);
 			x++;
 		}

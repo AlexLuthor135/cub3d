@@ -12,9 +12,20 @@ SRCS_BONUS		=	main.c map_render.c \
 				raycast_utils.c raycast_bonus.c sprite_utils.c \
 				map_check_utils.c map_check_utils2.c sky_bonus.c\
 
-MLX_FLAGS		= 	-lmlx -framework OpenGL -framework AppKit
-CC_FLAGS		=	-Wall -Wextra -Werror -g -fsanitize=address
+ifeq ($(UNAME_S),Linux)
+    MLX = mlx_linux/
+    MLX_FLAGS = -I -g3 -L /usr/X11/lib -Lincludes -L./mlx -lmlx -Imlx -lXext -lX11 -lz
+else ifeq ($(UNAME_S),Darwin)
+    MLX = mlx_mac/
+    MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
+endif
+
+	MLX = mlx_linux/
+	MLX_FLAGS = -I -g3 -L /usr/X11/lib -Lincludes -L./mlx -lmlx -Imlx -lXext -lX11 -lz
+
+CC_FLAGS		=	-Wall -Wextra -Werror -g #-fsanitize=address
 CC				=	cc
+
 SRCS_F			= src/
 OBJS_F			= obj/
 
@@ -22,9 +33,6 @@ SCRS_FBONUS		= src_bonus/
 OBJS_FBONUS		= obj_bonus/
 
 LIBFT = inc/libft/
-MLX = mlx/
-GNL = inc/get_next_line/
-HB = src_bonus/cub3d.h
 
 OBJS		=	$(SRCS:.c=.o)
 OBJS_BONUS	=	$(SRCS_BONUS:.c=.o)
@@ -41,10 +49,9 @@ $(OBJS_F)%.o: $(SRCS_F)%.c Makefile cub3d.h
 	@$(CC) $(CC_FLAGS) -O3 -c $< -o $@
 
 $(NAME): $(OBJS_P)
-	@$(MAKE) -C $(MLX) 
+	@$(MAKE) -C $(MLX)
 	@$(MAKE) -C $(LIBFT)
-	@$(MAKE) -C $(GNL)
-	@$(CC) $(CC_FLAGS) -O3 -L$(MLX) $(MLX_FLAGS) $(GNL)/get_next_line.a $(LIBFT)/libft.a -o $(NAME) $(OBJS_P)
+	@$(CC) $(CC_FLAGS) -O3 -o $(NAME) $(OBJS_P) -L$(MLX) $(MLX_FLAGS) $(LIBFT)/libft.a -lm
 	@echo "OK"
 
 bonus: $(NAME_BONUS)
@@ -57,8 +64,7 @@ $(OBJS_FBONUS)%.o: $(SCRS_FBONUS)%.c Makefile cub3d_bonus.h
 $(NAME_BONUS): $(OBJS_PBONUS)
 	@$(MAKE) -C $(MLX) 
 	@$(MAKE) -C $(LIBFT)
-	@$(MAKE) -C $(GNL)
-	@$(CC) $(CC_FLAGS) -O3 -L$(MLX) $(MLX_FLAGS) $(GNL)/get_next_line.a $(LIBFT)/libft.a -o $(NAME_BONUS) $(OBJS_PBONUS)
+	@$(CC) $(CC_FLAGS) -O3 -o $(NAME_BONUS) $(OBJS_PBONUS) -L$(MLX) $(MLX_FLAGS) $(LIBFT)/libft.a -lm
 	@echo "OK"
 
 clean:
@@ -66,7 +72,6 @@ clean:
 	@rm -rf $(OBJS_FBONUS)
 	@$(MAKE) clean -C $(MLX) 
 	@$(MAKE) fclean -C $(LIBFT) 
-	@$(MAKE) fclean -C $(GNL)
 
 fclean:	clean
 	@rm -rf $(NAME) $(NAME_BONUS)

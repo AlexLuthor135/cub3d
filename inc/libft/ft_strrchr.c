@@ -6,22 +6,11 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 17:33:08 by alappas           #+#    #+#             */
-/*   Updated: 2023/05/18 18:21:58 by alappas          ###   ########.fr       */
+/*   Updated: 2024/04/14 01:42:31 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int	ft_strlen2(const char *s2)
-
-{
-	int	i;
-
-	i = 0;
-	while (*s2++)
-		i++;
-	return (i);
-}
 
 char	*ft_strrchr(const char *s, int c)
 
@@ -30,7 +19,7 @@ char	*ft_strrchr(const char *s, int c)
 	char	*s1;
 
 	s1 = (char *) s;
-	i = ft_strlen2(s);
+	i = ft_strlen(s);
 	while (i >= 0)
 	{
 		if (s1[i] == ((char) c))

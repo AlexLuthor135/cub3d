@@ -6,7 +6,7 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 19:55:29 by alappas           #+#    #+#             */
-/*   Updated: 2024/02/06 07:27:12 by alappas          ###   ########.fr       */
+/*   Updated: 2024/05/15 22:12:24 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 # define WINDOW_H		800
 # define WINDOW_W		1024
 
-# define LEFT_KEY	123
-# define RIGHT_KEY	124
+
 
 # define MOVE_SPEED	0.06
 # define ROTATION_SPEED 0.04
@@ -28,9 +27,34 @@
 # define VDIV 2.0
 # define VMOVE 200.0
 
-# include "mlx/mlx.h"
+# if defined(__APPLE__)
+#  include "mlx_mac/mlx.h"
+#  define KEY_W		13
+#  define KEY_A		0
+#  define KEY_S		1
+#  define KEY_D		2
+#  define KEY_Q		12
+#  define KEY_E		14
+#  define KEY_ESC	53
+#  define KEY_LEFT	123
+#  define KEY_RIGHT	124
+#  define MUSIC		"afplay "
+# elif defined(__linux__)
+#  include "mlx_linux/mlx.h"
+#  define KEY_W   'w'
+#  define KEY_A   'a'
+#  define KEY_S   's'
+#  define KEY_D   'd'
+#  define KEY_Q   'q'
+#  define KEY_E   'e'
+#  define KEY_ESC 65307
+#  define KEY_LEFT	65361
+#  define KEY_RIGHT	65363
+// #  define MUSIC		"aplay "
+#  define MUSIC		"python music/music_script.py "
+#  include <X11/keysym.h>
+# endif
 # include "inc/libft/libft.h"
-# include "inc/get_next_line/get_next_line.h"
 # include <stdlib.h>
 # include <math.h>
 # include <signal.h>

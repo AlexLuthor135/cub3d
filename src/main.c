@@ -6,7 +6,7 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 22:10:01 by alappas           #+#    #+#             */
-/*   Updated: 2024/02/06 07:25:39 by alappas          ###   ########.fr       */
+/*   Updated: 2024/05/15 21:36:20 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	map_fix(t_game *game)
 void	mlx_func(t_game *game)
 
 {
-	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, WINDOW_W,
 			WINDOW_H, "Golden Sun");
 	game->img.img = mlx_new_image(game->mlx, WINDOW_W, WINDOW_H);
@@ -62,6 +61,7 @@ int	main(int argc, char **argv)
 	last_element(game);
 	if (error_string(game))
 		return (printf("Error: Wrong map element\n"), exit_game(game));
+	game->mlx = mlx_init();
 	map_alloc(game);
 	if (map_check(game))
 		exit_game(game);

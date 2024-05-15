@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_listlast.c                                      :+:      :+:    :+:   */
+/*   mlx_destroy_display.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/25 20:00:51 by alappas           #+#    #+#             */
-/*   Updated: 2023/08/01 03:11:45 by alappas          ###   ########.fr       */
+/*   Created: 2020/10/03 18:56:35 by mg                #+#    #+#             */
+/*   Updated: 2020/10/04 01:55:35 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "mlx_int.h"
 
-t_line	*ft_listlast(t_line *lst)
-
+int	mlx_destroy_display(t_xvar *xvar)
 {
-	if (lst != NULL)
-	{
-		while (lst->next != NULL)
-			lst = lst->next;
-	}
-	return (lst);
+	XCloseDisplay(xvar->display);
 }
