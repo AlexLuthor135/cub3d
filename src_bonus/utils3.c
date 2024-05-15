@@ -6,7 +6,7 @@
 /*   By: alappas <alappas@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 23:57:16 by alappas           #+#    #+#             */
-/*   Updated: 2024/05/16 00:00:34 by alappas          ###   ########.fr       */
+/*   Updated: 2024/05/16 00:06:04 by alappas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,17 @@ void	stop_music(void)
 	if (f == NULL)
 	{
 		printf("Error opening file\n");
+		if (full_path)
+			free(full_path);
 		return ;
 	}
 	fscanf(f, "%d", &pid);
 	fclose(f);
 	if (kill(pid, SIGKILL) == -1)
 		printf("Error: music not stopped\n");
+	remove(full_path);
+	if (full_path)
+		free(full_path);
 }
 
 void	music(t_game *game)
